@@ -5,10 +5,7 @@ import lombok.*;
 
 @Entity
 @Table(name = "usuarios")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Usuario {
 
     @Id
@@ -28,6 +25,9 @@ public class Usuario {
     @Column(nullable = false)
     private Rol rol;
 
-    // ID opcional para vincular con guia.id o transportista.id de la API de Lince
-    private String linceStaffId;
+    // ID en API Lince (transportistaId para DRIVER, guiaId para GUIA, null para COORDINADOR)
+    private Integer linceRecursoId;
+
+    // Oficina asignada ( SCL, PUX, PUQ)
+    private String oficinaCodigo;
 }
